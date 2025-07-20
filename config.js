@@ -7,14 +7,14 @@ import axios from 'axios'
 
 
 global.owner = [
-  ['16362439088', 'kinfux digital', true],
-  ['254110377776', 'kinflux digital', true], 
-  ['556199740980'] 
+  ['256709782637', 'kinfux digital', true],
+  ['256709782637', 'kinflux digital', true], 
+  ['256709782637'] 
 ] //Number of owners
 
-global.mods = ['16362439088','254110377776','556199740980'] 
-global.prems = ['22589747147', '254110377776', '556199740980']
-global.allowed = ['556199740980', '254110377776', '13374230362']
+global.mods = ['16362439088','256709782637','556199740980'] 
+global.prems = ['22589747147', '256709782637', '556199740980']
+global.allowed = ['556199740980', '256709782637', '13374230362']
 global.keysZens = ['c2459db922', '37CC845916', '6fb0eff124']
 global.keysxxx = keysZens[Math.floor(keysZens.length * Math.random())]
 global.keysxteammm = ['29d4b59a4aa687ca', '5LTV57azwaid7dXfz5fzJu', 'cb15ed422c71a2fb', '5bd33b276d41d6b4', 'HIRO', 'kurrxd09', 'ebb6251cc00f9c63']
