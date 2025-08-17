@@ -74,9 +74,9 @@ function App() {
   };
 
   const handleWatchMatch = (match) => {
-    if (match.status === 'live' || match.hasHighlights) {
+    if (match.status === 'live' || match.has_highlights) {
       // This would open a video player with legal content
-      alert(`Opening ${match.status === 'live' ? 'live stream' : 'highlights'} for ${match.homeTeam} vs ${match.awayTeam}`);
+      alert(`Opening ${match.status === 'live' ? 'live stream' : 'highlights'} for ${match.home_team} vs ${match.away_team}`);
     }
   };
 
