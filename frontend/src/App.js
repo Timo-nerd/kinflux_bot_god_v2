@@ -46,10 +46,14 @@ function App() {
     fetchData();
   }, []);
 
+  // Update filtered matches based on backend data structure
   const filteredMatches = matches.filter(match => {
-    const matchesLeague = selectedLeague === 'all' || match.league.toLowerCase().includes(selectedLeague.toLowerCase());
-    const matchesSearch = match.homeTeam.toLowerCase().includes(searchTerm.toLowerCase()) ||
-                         match.awayTeam.toLowerCase().includes(searchTerm.toLowerCase()) ||
+    const matchesLeague = selectedLeague === 'all' || 
+                         match.league.toLowerCase().includes(selectedLeague.toLowerCase()) ||
+                         leagues.find(l => l.id === selectedLeague)?.name.toLowerCase() === match.league.toLowerCase();
+    
+    const matchesSearch = match.home_team.toLowerCase().includes(searchTerm.toLowerCase()) ||
+                         match.away_team.toLowerCase().includes(searchTerm.toLowerCase()) ||
                          match.league.toLowerCase().includes(searchTerm.toLowerCase());
     
     let matchesStatus = true;
