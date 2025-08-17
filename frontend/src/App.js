@@ -222,7 +222,7 @@ function App() {
                         <Badge className={getStatusColor(match.status)}>
                           {match.status.toUpperCase()}
                         </Badge>
-                        {match.isFree && (
+                        {match.is_free && (
                           <Badge variant="outline" className="border-green-400 text-green-400">
                             FREE
                           </Badge>
