@@ -253,7 +253,7 @@ function App() {
                             Watch Live
                           </Button>
                         )}
-                        {match.hasHighlights && (
+                        {match.has_highlights && (
                           <Button 
                             variant="outline" 
                             className="flex-1 border-white/30 text-white hover:bg-white/10"
