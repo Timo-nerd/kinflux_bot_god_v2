@@ -19,73 +19,31 @@ function App() {
   const [searchTerm, setSearchTerm] = useState('');
   const [activeTab, setActiveTab] = useState('live');
 
-  // Mock data for demonstration
-  const mockMatches = [
-    {
-      id: 1,
-      homeTeam: 'Manchester United',
-      awayTeam: 'Liverpool',
-      league: 'Premier League',
-      date: '2025-01-20',
-      time: '15:00',
-      status: 'live',
-      score: { home: 2, away: 1 },
-      hasHighlights: true,
-      isFree: true
-    },
-    {
-      id: 2,
-      homeTeam: 'Real Madrid',
-      awayTeam: 'Barcelona',
-      league: 'La Liga',
-      date: '2025-01-20',
-      time: '20:00',
-      status: 'upcoming',
-      score: null,
-      hasHighlights: false,
-      isFree: true
-    },
-    {
-      id: 3,
-      homeTeam: 'Bayern Munich',
-      awayTeam: 'PSG',
-      league: 'UEFA Champions League',
-      date: '2025-01-19',
-      time: '21:00',
-      status: 'finished',
-      score: { home: 3, away: 2 },
-      hasHighlights: true,
-      isFree: true
-    },
-    {
-      id: 4,
-      homeTeam: 'Nigeria',
-      awayTeam: 'Morocco',
-      league: 'AFCON',
-      date: '2025-01-21',
-      time: '18:00',
-      status: 'upcoming',
-      score: null,
-      hasHighlights: false,
-      isFree: true
-    }
-  ];
-
-  const mockLeagues = [
-    { id: 'premier-league', name: 'Premier League', country: 'England', icon: '🏴󠁧󠁢󠁥󠁮󠁧󠁿' },
-    { id: 'la-liga', name: 'La Liga', country: 'Spain', icon: '🇪🇸' },
-    { id: 'champions-league', name: 'UEFA Champions League', country: 'Europe', icon: '🏆' },
-    { id: 'world-cup', name: 'FIFA World Cup', country: 'World', icon: '🌍' },
-    { id: 'afcon', name: 'AFCON', country: 'Africa', icon: '🌍' }
-  ];
-
+  // Fetch data from backend API
   useEffect(() => {
-    // Simulate API loading
-    setTimeout(() => {
-      setMatches(mockMatches);
-      setLeagues(mockLeagues);
-      setLoading(false);
-    }, 1000);
+    const fetchData = async () => {
+      try {
+        setLoading(true);
+        
+        // Fetch leagues and matches from backend
+        const [leaguesResponse, matchesResponse] = await Promise.all([
+          axios.get(`${BACKEND_URL}/api/leagues`),
+          axios.get(`${BACKEND_URL}/api/matches`)
+        ]);
+        
+        setLeagues(leaguesResponse.data);
+        setMatches(matchesResponse.data.matches || []);
+        
+      } catch (error) {
+        console.error('Error fetching data:', error);
+        // Show user-friendly error message
+        alert('Failed to load matches. Please check your connection and try again.');
+      } finally {
+        setLoading(false);
+      }
+    };
+    
+    fetchData();
   }, []);
 
   const filteredMatches = matches.filter(match => {
