@@ -229,7 +229,7 @@ function App() {
                         )}
                       </div>
                       <CardTitle className="text-white text-lg">
-                        {match.homeTeam} vs {match.awayTeam}
+                        {match.home_team} vs {match.away_team}
                       </CardTitle>
                       <CardDescription className="text-gray-300">
                         {match.league} • {match.date} {match.time}
